@@ -10,7 +10,7 @@
       <div class="col-xs-2">0</div>
     </li>
     <li><div class="col-xs-12">{{ strings.otherOperatingIncome || enpack.otherOperatingIncome }}</div></li>
-    <li><div class="col-xs-12"><b>{{ strings.rawMaterialsAndServices || enpack.rawMaterialsAndServices }}</b></div></li>
+    <li><div class="col-xs-12">{{ strings.rawMaterialsAndServices || enpack.rawMaterialsAndServices }}</div></li>
     <li>
       <ul>
         <li><div class="col-xs-12">{{ strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables }}</div></li>
@@ -56,13 +56,119 @@
                   <div class="col-xs-10">{{ strings.pensionExpenses || enpack.pensionExpenses }}</div>
                   <div class="col-xs-2">0</div>
                 </li>
-                  <li>
-                    <div class="col-xs-10">{{ strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses }}</div>
-                    <div class="col-xs-2">0</div>
-                  </li>
+                <li>
+                  <div class="col-xs-10">{{ strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses }}</div>
+                  <div class="col-xs-2">0</div>
+                </li>
               </ul>
             </li>
+            <li>
+              <div class="col-xs-10">{{ strings.staffExpensesTotal || enpack.staffExpensesTotal }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
           </ul>
+        </li>
+        <li><div class="col-xs-12">{{ strings.depreciationsAndReductionsInValue || enpack.depreciationsAndReductionsInValue }}</div></li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{ strings.depreciationsAccordingToPlan || enpack.depreciationsAccordingToPlan }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.reductionsInValue || enpack.reductionsInValue }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.depreciationsAndReductionsInValueTotal || enpack.depreciationsAndReductionsInValueTotal }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+          </ul>
+        </li>
+        <li><div class="col-xs-12">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div></li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{ strings.optionalStaffExpenses || enpack.optionalStaffExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.apartmentExpenses || enpack.apartmentExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.vechileExpenses || enpack.vechileExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.computerDeviceAndSoftware || enpack.computerDeviceAndSoftware }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.shorttermEquipment || enpack.shorttermEquipment }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.travelExpenses || enpack.travelExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.representationExpenses || enpack.representationExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.salesAndMarketingExpenses || enpack.salesAndMarketingExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.researchAndDevelopmentExpenses || enpack.researchAndDevelopmentExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.admistrationExpenses || enpack.admistrationExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{ strings.otherOperatingExpensesTotal || enpack.otherOperatingExpensesTotal }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.operatingProfitLoss || enpack.operatingProfitLoss }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.financialIncome || enpack.financialIncome }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.financialExpenses || enpack.financialExpenses }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.profitLossBeforeAppropriationsAndTaxes || enpack.profitLossBeforeAppropriationsAndTaxes }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.appropriationsIncome || enpack.appropriationsIncome }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.appropriationsExpense || enpack.appropriationsExpense }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.incomeTaxes || enpack.incomeTaxes }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear }}</div>
+          <div class="col-xs-2">0</div>
         </li>
       </ul>
     </li>

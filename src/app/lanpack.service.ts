@@ -73,6 +73,7 @@ export class LanpackService {
       otherSocialSecurityExpenses: "Other social security expenses",
       staffExpensesTotal: "Staff expenses, total",
       depreciationsAndReductionsInValue: "Depreciations and reductions in value",
+      depreciationsAccordingToPlan: "Depreciations according to plan",
       reductionsInValue: "Reductions in value",
       depreciationsAndReductionsInValueTotal: "Depreciations and reductions in value, total",
       otherOperatingExpenses: "Other operating expenses",
