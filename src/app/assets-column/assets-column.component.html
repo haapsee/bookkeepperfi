@@ -1,0 +1,210 @@
+<div >
+  <h2>{{ strings.balanceSheet }}</h2>
+</div>
+<div>
+  <ul>
+    <li>
+      <div class="col-xs-12">
+        <b>{{ strings.assets }}</b>
+      </div>
+    </li>
+    <li>
+      <ul>
+        <li>
+          <div class="col-xs-12">
+            <b>{{ strings.nonCurrentAssets || enpack.nonCurrentAssetsTotal }}</b>
+          </div>
+        </li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{strings.intangibleAssets || enpack.intangibleAssets}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="col-xs-12">
+            <b>{{strings.tangibleAssets || enpack.tangibleAssets}}</b>
+          </div>
+        </li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{strings.buildings || enpack.buildings}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.machineryAndEquipment || enpack.machineryAndEquipment}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.tangibleAssetsTotal || enpack.tangibleAssetsTotal}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.nonCurrentAssetsTotal || enpack.nonCurrentAssetsTotal}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.currentAssets || enpack.currentAssets}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.stocks || enpack.stocks}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-12">{{strings.debtors || enpack.debtors}}</div>
+        </li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-12">
+                <b>{{strings.shortterm || enpack.shortterm}}</b>
+              </div>
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <div class="col-xs-12">{{strings.tradeDebtors || enpack.tradeDebtors}}</div>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <div class="col-xs-10">{{strings.vatReceivables || enpack.vatReceivables}}</div>
+                      <div class="col-xs-2">0</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="col-xs-12">{{strings.otherReceivables || enpack.otherReceivables}}</div>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <div class="col-xs-10">{{strings.shorttermDeptorsTotal || enpack.shorttermDeptorsTotal}}</div>
+                      <div class="col-xs-2">0</div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{strings.currentAssetsTotal || enpack.currentAssetsTotal}}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{strings.assetsTotal || enpack.assetsTotal}}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+    <div class="col-xs-12"><br></div>
+    <li>
+      <div class="col-xs-12">
+        <b>{{strings.equityAndLiabilities || enpack.equityAndLiabilities}}</b>
+      </div>
+    </li>
+    <li>
+      <ul>
+        <li>
+          <div class="col-xs-12">{{strings.capitalAndReserves || enpack.capitalAndReserves}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.subscribedCapital || enpack.subscribedCapital}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.revaluationReserve || enpack.revaluationReserve}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.otherReserves || enpack.otherReserves}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.capitalAndReservesTotal || enpack.capitalAndReservesTotal}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.appropriations || enpack.appropriations}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.provisions || enpack.provisions}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.creditors || enpack.creditors}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li>
+          <div class="col-xs-12">{{strings.shortterm || enpack.shortterm}}</div>
+        </li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.tradeCreditors || enpack.tradeCreditors}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.vatDebt || enpack.vatDebt}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.otherCreditors || enpack.otherCreditors}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.shorttermCreditorsTotal || enpack.shorttermCreditorsTotal}}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="col-xs-10">{{strings.creditorsTotal || enpack.creditorsTotal}}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{strings.equityAndLiabilitiesTotal || enpack.equityAndLiabilitiesTotal}}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+  </ul>
+</div>

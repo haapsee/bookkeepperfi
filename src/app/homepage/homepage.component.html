@@ -1,0 +1,19 @@
+
+<div class="centered">
+  <div class="mdl-card mdl-shadow--6dp">
+    <div class="mdl-card__title">
+      <p><b>Welcome to the bookkeeper.fi</b><br>
+      Select language</p>
+    </div>
+    <div class="mdl-card__supporting-text" style="margin: auto;">
+      <!-- Generate flag buttons for language selection -->
+      <h2 class="text-center" *ngFor="let item of flags" style="padding: auto;">
+        <div class="col-xs-{{ 12 / flags.length | number : '1.0-0' }}">
+          <a routerLink="{{ item.link }}" class="mdl-color-text--primary">
+            <span class="flag-icon flag-icon-{{ item.shortened }} mdl-shadow--2dp"></span>
+          </a>
+        </div>
+      </h2>
+    </div>
+  </div>
+</div>
