@@ -26,6 +26,44 @@
             </li>
           </ul>
         </li>
+        <li>
+          <div class="col-xs-10">{{ strings.rawMaterialsAndConsumablesTotal || enpack.rawMaterialsAndConsumablesTotal }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.externalServices || enpack.externalServices }}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+    <li>
+      <ul>
+        <li>
+          <div class="col-xs-10">{{ strings.rawMaterialsAndServicesTotal || enpack.rawMaterialsAndServicesTotal }}</div>
+          <div class="col-xs-2">0</div>
+        </li>
+        <li><div class="col-xs-12">{{ strings.staffExpenses || enpack.staffExpenses }}</div></li>
+        <li>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{ strings.wagesAndSalaries || enpack.wagesAndSalaries }}</div>
+              <div class="col-xs-2">0</div>
+            </li>
+            <li><div class="col-xs-12">{{ strings.socialSecurityExpenses || enpack.socialSecurityExpenses }}</div></li>
+            <li>
+              <ul>
+                <li>
+                  <div class="col-xs-10">{{ strings.pensionExpenses || enpack.pensionExpenses }}</div>
+                  <div class="col-xs-2">0</div>
+                </li>
+                  <li>
+                    <div class="col-xs-10">{{ strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses }}</div>
+                    <div class="col-xs-2">0</div>
+                  </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
