@@ -1,9 +1,9 @@
-<div >
-  <h2>{{ strings.balanceSheet }}</h2>
+<div>
+  <h2>{{ strings.balanceSheet || enpack.balanceSheet }}</h2>
 </div>
 <div>
   <ul>
-    <li><div class="col-xs-12">{{ strings.assets }}</div></li>
+    <li><div class="col-xs-12">{{ strings.assets || enpack.assets }}</div></li>
     <li>
       <ul>
         <li><div class="col-xs-12">{{ strings.nonCurrentAssets || enpack.nonCurrentAssetsTotal }}</div></li>

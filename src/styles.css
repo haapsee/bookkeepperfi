@@ -33,7 +33,7 @@ a {
 }
 
 .mdl-card{
-  width: 90%;
+  /*width: 90%;*/
   margin: auto;
   opacity: 0.85;
   margin-bottom: 25px;
