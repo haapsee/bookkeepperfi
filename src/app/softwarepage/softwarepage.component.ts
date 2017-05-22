@@ -27,6 +27,7 @@ export class SoftwarepageComponent implements OnInit {
       this.language = "english";
     }/**/
     this.strings = this.lanservice.getPack(this.lan);
+    
     this.enpack = this.lanservice.getPack("en");
 
   }
