@@ -16,6 +16,7 @@ export class SoftwarepageComponent implements OnInit {
   enpack: any;
   lan: any = "en";
   strings: any;
+  asdf: String = "asdf";
 
   constructor(private ts: StorageService, private router: Router, private lanservice: LanpackService,
     private assetsCol: AssetsColumnComponent) {
@@ -26,6 +27,10 @@ export class SoftwarepageComponent implements OnInit {
     }else{
       this.language = "english";
     }/**/
+    //console.log(this.strings);
+    //console.log(this.router.url.split("/"));
+
+    
     this.strings = this.lanservice.getPack(this.lan);
     this.enpack = this.lanservice.getPack("en");
   }

@@ -6,37 +6,13 @@ import { LanpackService } from "../lanpack.service";
   selector: 'profitcolumn',
   templateUrl: './profitcolumn.component.html',
   providers: [LanpackService],
-  styleUrls: ['./profitcolumn.component.css']
+  styleUrls: ['./profitcolumn.component.css'],
+  inputs: ["strings", "enpack"]
 })
 export class ProfitcolumnComponent implements OnInit {
-  language: any;
-  enpack: any;
-  lan: any = "en";
-  strings: any;
 
-  constructor(private router: Router, private lanservice: LanpackService) {
-    /*if(this.router.url == "/se/software"){
-      this.language = "sweden";
-    }else if(this.router.url == "/fi/software"){
-      this.language = "suomi";
-    }else{
-      this.language = "english";
-    }/**/
-    this.strings = this.lanservice.getPack(this.lan);
-    this.enpack = this.lanservice.getPack("en");
-    //console.log(this.strings);
-    //console.log(this.router.url.split("/"));
-  }
+  constructor(private router: Router, private lanservice: LanpackService) { }
 
-  setLanpack(lanpack: any){
-    this.strings = lanpack;
-  }
-
-  getLanpack(){
-    console.log(this.strings);
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
