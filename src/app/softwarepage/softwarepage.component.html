@@ -19,12 +19,52 @@
 <div class="vcentered">
 
   <div class="container-fluid mdl-color--white mdl-shadow--6dp">
-    <div class="col-xs-12  mdl-shadow--6dp mdl-color--blue-50" style="opacity: 0.85; padding-bottom: 20px;">
+    <div class="col-xs-12  mdl-shadow--6dp" style="background: rgba(200, 230, 255, 0.66) !important; padding-bottom: 20px;">
       <div class="col-xs-12 col-lg-4" style="float: right;">
         <div class="col-xs-12">
           <h2>Everything else</h2>
         </div>
-        <div style="clear: both"></div>
+        <div style="clear: both">
+          <div class="col-sm-6 col-lg-12" style="margin-bottom: 50px;">
+            <form>
+              <div class="row">
+                <div class="col-xs-8">
+                  <div class="form-group">
+                    <label for="costsell">cost/sell</label>
+                    <input type="number" class="form-control" id="costsell">
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="form-group">
+                    <label for="alv">ALV %</label>
+                    <select class="form-control" id="alv">
+                      <option *ngFor="let alv of alvs" >{{alv}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <h1>There will be gategories</h1>
+              </div>
+              <div class="row">
+                <button class="btn btn-disabled btn-block">submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-6 col-lg-12">
+            <div class="row text-center">
+              <h4>Passed data</h4>
+            </div>
+            <div class="row mdl-shadow--3dp mdl-color--white" style='overflow: auto; min-height: 150px; max-height: 250px;'>
+              <div class="row text-center" style="width: 100%; padding: 0; margin: 10px 0;" *ngFor="let item of items">
+                <div class="col-sm-3">{{item.sell}}</div>
+                <div class="col-sm-2">{{item.vat}}%</div>
+                <div class="col-sm-6">{{item.gategory}}</div>
+                <div class="col-sm-1">x</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
 

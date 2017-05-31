@@ -17,6 +17,18 @@ export class SoftwarepageComponent implements OnInit {
   lan: any = "en";
   strings: any;
   asdf: String = "asdf";
+  alvs: any = [ 0, 10, 14, 24 ];
+  items: any = [
+    {
+      sell: 123.45,
+      vat: 24,
+      gategory: "Turnover (net sales)"
+    },{
+      sell: 23.45,
+      vat: 14,
+      gategory: "External services"
+    },
+  ];
 
   constructor(private ts: StorageService, private router: Router, private lanservice: LanpackService,
     private assetsCol: AssetsColumnComponent) {
@@ -30,7 +42,7 @@ export class SoftwarepageComponent implements OnInit {
     //console.log(this.strings);
     //console.log(this.router.url.split("/"));
 
-    
+
     this.strings = this.lanservice.getPack(this.lan);
     this.enpack = this.lanservice.getPack("en");
   }

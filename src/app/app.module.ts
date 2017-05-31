@@ -16,7 +16,7 @@ import { AssetsColumnComponent } from './assets-column/assets-column.component';
 import { ProfitcolumnComponent } from './profitcolumn/profitcolumn.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: SoftwarepageComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'fi/software', component: SoftwarepageComponent },
   { path: 'se/software', component: SoftwarepageComponent },

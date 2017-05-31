@@ -62,3 +62,7 @@ ul {
 .underline{
   border-bottom: 1px solid #000;
 }
+
+div{
+  color: #000 !important;
+}
