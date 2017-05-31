@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  flags: any = [{
+  flags: any = [/*{
       shortened: "fi",
       link: "/fi/software"
-    }, {
+    },*/ {
       shortened: "gb",
       link: "/en/software"
-    }, {
+    }/*, {
       shortened: "se",
-      link: "/se/software" } ];
+      link: "/se/software" }*/];
 
     text: any = "test/1";
 

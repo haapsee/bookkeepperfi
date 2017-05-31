@@ -109,11 +109,8 @@ export class LanpackService {
 
 
     },
-// finnish
-    fi: {
-      previous: "takaisin",
-      balanceSheet: "Tase"
-    }
+    fi: {},
+    se: {}
   }
 
   constructor() { }
