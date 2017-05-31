@@ -100,7 +100,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_7__softwarepage_softwarepage_component__["a" /* SoftwarepageComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_6__homepage_homepage_component__["a" /* HomepageComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_6__homepage_homepage_component__["a" /* HomepageComponent */] },
     { path: 'fi/software', component: __WEBPACK_IMPORTED_MODULE_7__softwarepage_softwarepage_component__["a" /* SoftwarepageComponent */] },
     { path: 'se/software', component: __WEBPACK_IMPORTED_MODULE_7__softwarepage_softwarepage_component__["a" /* SoftwarepageComponent */] },
