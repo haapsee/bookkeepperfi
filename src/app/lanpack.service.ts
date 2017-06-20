@@ -31,6 +31,7 @@ export class LanpackService {
       currentAssets: "Current assets",
       currentAssetsTotal: "Current assets, total",
 
+      debtor: "Debtor",
       debtors: "Debtors",
       depreciationsAccordingToPlan: "Depreciations according to plan",
       depreciationsAndReductionsInValue: "Depreciations and reductions in value",
@@ -43,6 +44,7 @@ export class LanpackService {
       financialExpenses: "Financial expenses",
       financialIncome: "Financial income",
 
+      income: "Income",
       incomeTaxes: "Income taxes",
       intangibleAssets: "Intangible assets",
       investments: "Investments",
@@ -101,6 +103,7 @@ export class LanpackService {
       turnoverNetSales: "Turnover (net sales)",
 
       variationsInStocks: "Variations in stocks",
+      vat: "VAT",
       vatDebt: "Vat-debt",
       vatReceivables: "Vat-receivables",
       vechileExpenses: "Vechile expenses",

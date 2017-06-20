@@ -13,22 +13,21 @@ import { ProfitcolumnComponent } from "../profitcolumn/profitcolumn.component";
 })
 export class SoftwarepageComponent implements OnInit {
 
+
+  // form data
+  creditordebit:any;
+  itemHeader: any;
+  itemSubHeader: any;
+  alv:any;
+  costsell:any;
+
+
+  // language data
   enpack: any;
   lan: any = "en";
   strings: any;
-  asdf: String = "asdf";
   alvs: any = [ 0, 10, 14, 24 ];
-  items: any = [
-    {
-      sell: 123.45,
-      vat: 24,
-      gategory: "Turnover (net sales)"
-    },{
-      sell: 23.45,
-      vat: 14,
-      gategory: "External services"
-    },
-  ];
+  items: any = [];
 
   constructor(private ts: StorageService, private router: Router, private lanservice: LanpackService,
     private assetsCol: AssetsColumnComponent) {
@@ -41,13 +40,44 @@ export class SoftwarepageComponent implements OnInit {
     }/**/
     //console.log(this.strings);
     //console.log(this.router.url.split("/"));
-
-
     this.strings = this.lanservice.getPack(this.lan);
     this.enpack = this.lanservice.getPack("en");
+
+    this.timeOutFunction();
   }
 
-  ngOnInit() {
+  buttonDisabled(){
+    if(this.alv==undefined||this.costsell==undefined||
+      this.itemHeader==undefined||this.itemSubHeader==undefined){
+      return "disabled";
+    }else{
+      return "warning";
+    }
   }
+
+  timeOutFunction(){
+    console.log(this.creditordebit);
+
+    if(this.creditordebit == "credit"){
+
+    }
+
+    setTimeout(() => {
+      this.timeOutFunction();
+    }, 1000);
+  }
+
+  buttonClicked(){
+    if(this.buttonDisabled()!="disabled"){
+      this.items.push("lol");
+      this.alv=undefined;
+      this.costsell=undefined;
+      this.itemSubHeader=undefined;
+      this.itemHeader=undefined;
+      this.creditordebit=undefined;
+    }
+  }
+
+  ngOnInit() { }
 
 }
