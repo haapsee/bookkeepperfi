@@ -22,9 +22,11 @@ export class LanpackService {
       balanceSheet: "Balance sheet",
       buildings: "Buildings",
 
+      capital: "Capital",
       capitalAndReserves: "Capital and reserves",
       capitalAndReservesTotal: "Capital and reserves, Total",
       cashInHandAndInBank: "Cash in hand and in bank",
+      cashOrBank: "Cash or bank",
       computerDeviceAndSoftware: "Computer device and software",
       creditors: "Creditors",
       creditorsTotal: "Creditors total",
@@ -49,8 +51,10 @@ export class LanpackService {
       intangibleAssets: "Intangible assets",
       investments: "Investments",
 
+      loanOrDebt: "Loan or debt",
       loansFromCreditInstitutions: "Loans from credit institutions",
       longterm: "Longterm",
+      longtermExpenses: "Longterm expenses",
 
       machineryAndEquipment: "Machinery and equipment",
       nonCurrentAssets: "Non-current assets",
@@ -89,6 +93,7 @@ export class LanpackService {
       shorttermCreditorsTotal: "Shortterm creditors, total",
       shorttermDeptorsTotal: "Shortterm debtors, total",
       shorttermEquipment: "Shortterm equipment",
+      shorttermExpenses: "Shortterm expenses",
       socialSecurityExpenses: "Social security expenses",
       staffExpenses: "Staff expenses",
       staffExpensesTotal: "Staff expenses, total",

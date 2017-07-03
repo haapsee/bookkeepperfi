@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Init } from "./init-storage";
+import { Item } from "./item";
 
 @Injectable()
 export class StorageService extends Init {
 
+  items:any;
+
   constructor() {
     super();
+  }
 
-    this.load();
-    this.write();
+  save(x){
+    this.write(JSON.stringify(x));
+  }
 
+  getData(){
+    return this.load();
   }
 }

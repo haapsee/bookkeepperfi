@@ -18,12 +18,9 @@
 
 <div class="vcentered">
 
-  <div class="container-fluid mdl-color--white mdl-shadow--6dp">
-    <div class="col-xs-12  mdl-shadow--6dp" style="background: rgba(200, 230, 255, 0.66) !important; padding-bottom: 20px;">
+  <div class="container-fluid mdl-color--white mdl-shadow--6dp" style="zoom: 80%">
+    <div class="col-xs-12  mdl-shadow--6dp" style="background: rgba(210, 240, 255, 0.85) !important; padding: 20px 0;">
       <div class="col-xs-12 col-lg-4" style="float: right;">
-        <div class="col-xs-12">
-          <h2>Everything else</h2>
-        </div>
         <div style="clear: both">
           <div class="col-sm-6 col-lg-12" style="margin-bottom: 50px;">
             <div class="row">
@@ -60,38 +57,110 @@
                       <select class="form-control" id="itemHeader" [(ngModel)]="itemHeader">
                         <option value="income">{{strings.income || enpack.income}}</option>
                         <option value="debtor">{{strings.debtor || enpack.debtor}}</option>
+                        <option value="cashOrBank">{{strings.cashOrBank || enpack.cashOrBank}}</option>
                       </select>
                     </div>
                     <div *ngSwitchCase="'debit'">
                       <select class="form-control" id="itemHeader" [(ngModel)]="itemHeader">
+                        <option value="shorttermExpenses">{{strings.shorttermExpenses || enpack.shorttermExpenses}}</option>
+                        <option value="longtermExpenses">{{strings.longtermExpenses || enpack.longtermExpenses}}</option>
+                        <option value="capital">{{strings.capital || enpack.capital}}</option>
+                        <option value="loanOrDebt">{{strings.loanOrDebt || enpack.loanOrDebt}}</option>
                       </select>
                     </div>
-                    <div *ngSwitchDefault>
-                      <select class="form-control" id="itemHeader" [(ngModel)]="itemHeader">
-                      </select>
-                    </div>
+                    <div *ngSwitchDefault><select class="form-control" id="itemHeader" [(ngModel)]="itemHeader"></select></div>
                   </div>
                 </div>
               </div>
               <div class="col-xs-12">
                 <div class="form-group">
-                  <label for="itemSubHeader">subheader</label>
+                  <label for="itemSubHeader">Subheader</label>
                   <div [ngSwitch]="itemHeader">
+                    <div *ngSwitchCase="'loanOrDebt'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="longterm">{{strings.longterm || enpack.longterm}}</option>
+                        <option value="loansFromCreditInstitutions">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</option>
+                        <option value="tradeCreditors">{{strings.tradeCreditors || enpack.tradeCreditors}}</option>
+                        <option value="vatDebt">{{strings.vatDebt || enpack.vatDebt}}</option>
+                        <option value="otherCreditors">{{strings.otherCreditors || enpack.otherCreditors}}</option>
+                      </select>
+                    </div>
+                    <div *ngSwitchCase="'capital'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="subscribedCapital">{{strings.subscribedCapital || enpack.subscribedCapital}}</option>
+                        <option value="revaluationReserve">{{strings.revaluationReserve || enpack.revaluationReserve}}</option>
+                        <option value="otherReserves">{{strings.otherReserves || enpack.otherReserves}}</option>
+                        <option value="retairnedEarnings">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</option>
+                        <option value="profitLossOfTheFinancialYear">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</option>
+                      </select>
+                    </div>
+                    <div *ngSwitchCase="'longtermExpenses'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="intangibleAssets">{{strings.intangibleAssets || enpack.intangibleAssets}}</option>
+                        <option value="buildings">{{strings.buildings || enpack.buildings}}</option>
+                        <option value="machineryAndEquipment">{{strings.machineryAndEquipment || enpack.machineryAndEquipment}}</option>
+                        <option value="investments">{{strings.investments || enpack.investments}}</option>
+                        <option value="stocks">{{strings.stocks || enpack.stocks}}</option>
+                      </select>
+                    </div>
+                    <div *ngSwitchCase="'shorttermExpenses'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="purchasesDuringTheFinancialYear">
+                          {{strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables}},
+                          {{strings.purchasesDuringTheFinancialYear || enpack.purchasesDuringTheFinancialYear}}
+                        </option>
+                        <option value="variationsInStocks">
+                          {{strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables}},
+                          {{strings.variationsInStocks || enpack.variationsInStocks}}
+                        </option>
+                        <option value="externalServices">{{strings.externalServices || enpack.externalServices}}</option>
+                        <option value="wagesAndSalaries">{{strings.wagesAndSalaries || enpack.wagesAndSalaries}}</option>
+                        <option value="pensionExpenses">{{strings.pensionExpenses || enpack.pensionExpenses}}</option>
+                        <option value="otherSocialSecurityExpenses">{{strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses}}</option>
+                        <option value="depreciationsAccordingToPlan">{{strings.depreciationsAccordingToPlan || enpack.depreciationsAccordingToPlan}}</option>
+                        <option value="reductionsInValue">{{strings.reductionsInValue || enpack.reductionsInValue}}</option>
+                        <option value="optionalStaffExpenses">{{strings.optionalStaffExpenses || enpack.optionalStaffExpenses}}</option>
+                        <option value="apartmentExpenses">{{strings.apartmentExpenses || enpack.apartmentExpenses}}</option>
+                        <option value="vechileExpenses">{{strings.vechileExpenses || enpack.vechileExpenses}}</option>
+                        <option value="computerDeviceAndSoftware">{{strings.computerDeviceAndSoftware || enpack.computerDeviceAndSoftware}}</option>
+                        <option value="shorttermEquipment">{{strings.shorttermEquipment || enpack.shorttermEquipment}}</option>
+                        <option value="travelExpenses">{{strings.travelExpenses || enpack.travelExpenses}}</option>
+                        <option value="representationExpenses">{{strings.representationExpenses || enpack.representationExpenses}}</option>
+                        <option value="salesAndMarketingExpenses">{{strings.salesAndMarketingExpenses || enpack.salesAndMarketingExpenses}}</option>
+                        <option value="researchAndDevelopmentExpenses">{{strings.researchAndDevelopmentExpenses || enpack.researchAndDevelopmentExpenses}}</option>
+                        <option value="admistrationExpenses">{{strings.admistrationExpenses || enpack.admistrationExpenses}}</option>
+                        <option value="otherOperatingExpenses">{{strings.otherOperatingExpenses || enpack.otherOperatingExpenses}}</option>
+                        <option value="financialExpenses">{{strings.financialExpenses || enpack.financialExpenses}}</option>
+                        <option value="appropriationsExpense">{{strings.appropriationsExpense || enpack.appropriationsExpense}}</option>
+                        <option value="incomeTaxes">{{strings.incomeTaxes || enpack.incomeTaxes}}</option>
+                      </select>
+                    </div>
                     <div *ngSwitchCase="'income'">
                       <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
-                        <option value="turnover">{{strings.turnoverNetSales || enpack.turnoverNetSales}}</option>
+                        <option value="turnoverNetSales">{{strings.turnoverNetSales || enpack.turnoverNetSales}}</option>
                         <option value="otherOperatingIncome">{{strings.otherOperatingIncome || enpack.otherOperatingIncome}}</option>
                         <option value="financialIncome">{{strings.financialIncome || enpack.financialIncome}}</option>
                         <option value="appropriationsIncome">{{strings.appropriationsIncome || enpack.appropriationsIncome}}</option>
                       </select>
                     </div>
-                    <div *ngSwitchDefault>
-                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemHeader">
+                    <div *ngSwitchCase="'debtor'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="longterm">{{strings.longterm || enpack.longterm}}</option>
+                        <option value="tradeDebtors">{{strings.tradeDebtors || enpack.tradeDebtors}}</option>
+                        <option value="otherReceivables">{{strings.otherReceivables || enpack.otherReceivables}}</option>
                       </select>
+                    </div>
+                    <div *ngSwitchCase="'cashOrBank'">
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
+                        <option value="cashInHandAndInBank">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</option>
+                        <option value="investments">{{strings.investments || enpack.investments}}</option>
+                      </select>
+                    </div>
+                    <div *ngSwitchDefault>
+                      <select class="form-control" id="itemSubHeader" [(ngModel)]="itemHeader"></select>
                     </div>
                   </div>
                 </div>
-                {{creditordebit}}, {{itemHeader}}, {{itemSubHeader}}
               </div>
             </div>
             <div class="col-xs-12">
@@ -103,17 +172,32 @@
             </div>
           </div>
           <div class="col-sm-6 col-lg-12">
-            <div class="row text-center">
-              <h4>Passed data</h4>
-            </div>
-            <div class="row mdl-shadow--3dp mdl-color--white" style='overflow: auto; min-height: 150px; max-height: 250px;'>
-              <div class="row text-center" style="width: 100%; padding: 0; margin: 10px 0;" *ngFor="let item of items">
+            <div class="row mdl-shadow--3dp mdl-color--white">
 
-                <div>{{item}}</div>
-                <!--<div class="col-sm-3">{{item.sell}}</div>
-                <div class="col-sm-2">{{item.vat}}%</div>
-                <div class="col-sm-6">{{item.gategory}}</div>
-                <!--<div class="col-sm-1">x</div><!-- -->
+                <div class="row text-center" style="width: 100%; padding: 0; margin: 10px 0;">
+                  <h4>Passed data</h4>
+                </div>
+              <div class="row text-center mdl-shadow--2dp" style="width: 100%; padding: 0 0 10px; margin: 10px 0 0;">
+                <div class="col-xs-4"><b>Item</b></div>
+                <div class="col-xs-2"><b>Price</b></div>
+                <div class="col-xs-2"><b>VAT %</b></div>
+                <div class="col-xs-2"><b>VAT €</b></div>
+                <div class="col-xs-1"><b>Delete</b></div>
+              </div>
+              <div  style='overflow: auto; min-height: 100px; max-height: 300px;'>
+                <div class="row text-center" style="width: 100%; padding: 2px 0 10px; margin: 10px 0; border-bottom: #aaa solid 1px;" *ngFor="let item of items">
+                  <div class="col-xs-12">
+                    <div class="col-xs-4"><b>{{strings[item.getHeader()]}}</b></div>
+                    <div class="col-xs-2">{{item.getMoney()-getVatAmount(item)}}</div>
+                    <div class="col-xs-2">{{item.getVat()}}</div>
+                    <div class="col-xs-2">{{getVatAmount(item)}}</div>
+                    <div class="col-xs-1"><button class="btn btn-danger" (click)="remove(item.getIndex());">x</button></div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="col-xs-4">{{strings[item.getSubHeader()]}}</div>
+                    <div class="col-xs-6" style="border-top: #aaa solid 1px;"><b>Total: </b>{{item.getMoney()}}€</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

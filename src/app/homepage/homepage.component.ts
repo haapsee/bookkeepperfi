@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
       link: "/fi/software"
     },*/ {
       shortened: "gb",
-      link: "/en/software"
+      link: "/en"
     }/*, {
       shortened: "se",
       link: "/se/software" }*/];

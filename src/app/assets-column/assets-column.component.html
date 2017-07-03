@@ -11,88 +11,86 @@
           <ul>
             <li>
               <div class="col-xs-10">{{strings.intangibleAssets || enpack.intangibleAssets}}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-2">{{getSalesOf("intangibleAssets")}}</div>
+            </li>
+            <li><div class="col-xs-12">{{strings.tangibleAssets || enpack.tangibleAssets}}</div></li>
+            <li>
+              <ul>
+                <li>
+                  <div class="col-xs-10">{{strings.buildings || enpack.buildings}}</div>
+                  <div class="col-xs-2">{{getSalesOf("buildings")}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.machineryAndEquipment || enpack.machineryAndEquipment}}</div>
+                  <div class="col-xs-2">{{getSalesOf("machineryAndEquipment")}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.tangibleAssetsTotal || enpack.tangibleAssetsTotal}}</div>
+                  <div class="col-xs-2">0</div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
+              <div class="col-xs-2">{{getSalesOfOf("longtermExpenses", "investments")}}</div>
             </li>
           </ul>
-        </li>
-        <li><div class="col-xs-12">{{strings.tangibleAssets || enpack.tangibleAssets}}</div></li>
-        <li>
-          <ul>
-            <li>
-              <div class="col-xs-10">{{strings.buildings || enpack.buildings}}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{strings.machineryAndEquipment || enpack.machineryAndEquipment}}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{strings.tangibleAssetsTotal || enpack.tangibleAssetsTotal}}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.nonCurrentAssetsTotal || enpack.nonCurrentAssetsTotal}}</div>
-          <div class="col-xs-2">0</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.currentAssets || enpack.currentAssets}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2"><b>0</b></div>
         </li>
-        <li>
-          <div class="col-xs-10">{{strings.stocks || enpack.stocks}}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li><div class="col-xs-12">{{strings.debtors || enpack.debtors}}</div></li>
         <li>
           <ul>
             <li>
-              <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-10">{{strings.stocks || enpack.stocks}}</div>
+              <div class="col-xs-2">{{getSalesOf("stocks")}}</div>
             </li>
-            <li><div class="col-xs-12">{{strings.shortterm || enpack.shortterm}}</div></li>
+            <li (click)="toggleDebtors()"><div class="col-xs-12">
+              {{strings.debtors || enpack.debtors}}
+              <sub class="glyphicon glyphicon-triangle-bottom"></sub>
+            </div></li>
             <li>
-              <ul>
-                <li><div class="col-xs-12">{{strings.tradeDebtors || enpack.tradeDebtors}}</div></li>
+              <ul *ngIf="debtors" >
+                <li>
+                  <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+                  <div class="col-xs-2">{{getSalesOfOf("debtor", "longterm")}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.shortterm || enpack.shortterm}}</div>
+                  <div class="col-xs-2"><b>
+                    {{getSalesOf("tradeDebtors") + getSalesOf("vatReceivables") + getSalesOf("otherReceivables")}}
+                  </b></div>
+                </li>
                 <li>
                   <ul>
+                    <li>
+                      <div class="col-xs-10">{{strings.tradeDebtors || enpack.tradeDebtors}}</div>
+                      <div class="col-xs-2">{{getSalesOf("tradeDebtors")}}</div>
+                    </li>
                     <li>
                       <div class="col-xs-10">{{strings.vatReceivables || enpack.vatReceivables}}</div>
-                      <div class="col-xs-2">0</div>
+                      <div class="col-xs-2">{{getSalesOf("vatReceivables")}}</div>
                     </li>
-                  </ul>
-                </li>
-                <li><div class="col-xs-12">{{strings.otherReceivables || enpack.otherReceivables}}</div></li>
-                <li>
-                  <ul>
                     <li>
-                      <div class="col-xs-10">{{strings.shorttermDeptorsTotal || enpack.shorttermDeptorsTotal}}</div>
-                      <div class="col-xs-2">0</div>
+                      <div class="col-xs-10">{{strings.otherReceivables || enpack.otherReceivables}}</div>
+                      <div class="col-xs-2">{{getSalesOf("otherReceivables")}}</div>
                     </li>
                   </ul>
                 </li>
               </ul>
             </li>
+            <li>
+              <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
+              <div class="col-xs-2">{{getSalesOfOf("cashOrBank", "investments")}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</div>
+              <div class="col-xs-2">{{getSalesOfOf("cashOrBank", "cashInHandAndInBank")}}</div>
+            </li>
           </ul>
         </li>
-        <li>
-          <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</div>
-          <div class="col-xs-2">0</div>
-        </li>
       </ul>
-    </li>
-    <li>
-      <div class="col-xs-10">{{strings.currentAssetsTotal || enpack.currentAssetsTotal}}</div>
-      <div class="col-xs-2">0</div>
     </li>
     <li>
       <div class="col-xs-10">{{strings.assetsTotal || enpack.assetsTotal}}</div>
@@ -105,23 +103,23 @@
         <li><div class="col-xs-12">{{strings.capitalAndReserves || enpack.capitalAndReserves}}</div></li>
         <li>
           <div class="col-xs-10">{{strings.subscribedCapital || enpack.subscribedCapital}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOf("subscribedCapital")}}</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.revaluationReserve || enpack.revaluationReserve}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOf("revaluationReserve")}}</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.otherReserves || enpack.otherReserves}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOf("otherReserves")}}</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOf("retairnedEarnings")}}</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOf("profitLossOfTheFinancialYear")}}</div>
         </li>
         <li>
           <div class="col-xs-10">{{strings.capitalAndReservesTotal || enpack.capitalAndReservesTotal}}</div>
@@ -141,21 +139,27 @@
         </li>
         <li>
           <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getSalesOfOf("loanOrDebt", "longterm")}}</div>
         </li>
         <li><div class="col-xs-12">{{strings.shortterm || enpack.shortterm}}</div></li>
         <li>
           <ul>
-            <li><div class="col-xs-12">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</div></li>
+            <li>
+              <div class="col-xs-10">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</div>
+              <div class="col-xs-2">{{getSalesOf("loansFromCreditInstitutions")}}</div>
+            </li>
             <li>
               <div class="col-xs-10">{{strings.tradeCreditors || enpack.tradeCreditors}}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-2">{{getSalesOf("tradeCreditors")}}</div>
             </li>
             <li>
               <div class="col-xs-10">{{strings.vatDebt || enpack.vatDebt}}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-2">{{getSalesOf("vatDebt")}}</div>
             </li>
-            <li><div class="col-xs-12">{{strings.otherCreditors || enpack.otherCreditors}}</div></li>
+            <li>
+              <div class="col-xs-10">{{strings.otherCreditors || enpack.otherCreditors}}</div>
+              <div class="col-xs-2">{{getSalesOf("otherCreditors")}}</div>
+            </li>
             <li>
               <div class="col-xs-10">{{strings.shorttermCreditorsTotal || enpack.shorttermCreditorsTotal}}</div>
               <div class="col-xs-2">0</div>

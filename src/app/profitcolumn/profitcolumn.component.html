@@ -7,170 +7,169 @@
   <ul>
     <li>
       <div class="col-xs-10">{{ strings.turnoverNetSales || enpack.turnoverNetSales }}</div>
-      <div class="col-xs-2">0</div>
+      <div class="col-xs-2">{{getSalesOf("turnoverNetSales")}}</div>
     </li>
-    <li><div class="col-xs-12">{{ strings.otherOperatingIncome || enpack.otherOperatingIncome }}</div></li>
+    <li>
+      <div class="col-xs-10">{{ strings.otherOperatingIncome || enpack.otherOperatingIncome }}</div>
+      <div class="col-xs-2">{{getSalesOf("otherOperatingIncome")}}</div>
+    </li>
     <li><div class="col-xs-12">{{ strings.rawMaterialsAndServices || enpack.rawMaterialsAndServices }}</div></li>
     <li>
       <ul>
-        <li><div class="col-xs-12">{{ strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables }}</div></li>
+        <li>
+          <div class="col-xs-10">{{ strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables }}</div>
+          <div class="col-xs-2">
+            <b>{{getSalesOf("purchasesDuringTheFinancialYear")+getSalesOf("variationsInStocks")}}</b>
+          </div>
+        </li>
         <li>
           <ul>
             <li>
               <div class="col-xs-10">{{ strings.purchasesDuringTheFinancialYear || enpack.purchasesDuringTheFinancialYear }}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-2">{{getSalesOf("purchasesDuringTheFinancialYear")}}</div>
             </li>
             <li>
               <div class="col-xs-10">{{ strings.variationsInStocks || enpack.variationsInStocks }}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-2">{{getSalesOf("variationsInStocks")}}</div>
             </li>
           </ul>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.rawMaterialsAndConsumablesTotal || enpack.rawMaterialsAndConsumablesTotal }}</div>
-          <div class="col-xs-2">0</div>
         </li>
       </ul>
     </li>
     <li>
       <div class="col-xs-10">{{ strings.externalServices || enpack.externalServices }}</div>
+      <div class="col-xs-2">{{getSalesOf("externalServices")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.rawMaterialsAndServicesTotal || enpack.rawMaterialsAndServicesTotal }}</div>
       <div class="col-xs-2">0</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.staffExpenses || enpack.staffExpenses }}</div>
+      <div class="col-xs-2"><b>
+        {{getSalesOf("wagesAndSalaries")+getSalesOf("pensionExpenses")+getSalesOf("otherSocialSecurityExpenses")}}
+      </b></div>
     </li>
     <li>
       <ul>
         <li>
-          <div class="col-xs-10">{{ strings.rawMaterialsAndServicesTotal || enpack.rawMaterialsAndServicesTotal }}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-10">{{ strings.wagesAndSalaries || enpack.wagesAndSalaries }}</div>
+          <div class="col-xs-2">{{getSalesOf("wagesAndSalaries")}}</div>
         </li>
-        <li><div class="col-xs-12">{{ strings.staffExpenses || enpack.staffExpenses }}</div></li>
+        <li><div class="col-xs-12">{{ strings.socialSecurityExpenses || enpack.socialSecurityExpenses }}</div></li>
         <li>
           <ul>
             <li>
-              <div class="col-xs-10">{{ strings.wagesAndSalaries || enpack.wagesAndSalaries }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li><div class="col-xs-12">{{ strings.socialSecurityExpenses || enpack.socialSecurityExpenses }}</div></li>
-            <li>
-              <ul>
-                <li>
-                  <div class="col-xs-10">{{ strings.pensionExpenses || enpack.pensionExpenses }}</div>
-                  <div class="col-xs-2">0</div>
-                </li>
-                <li>
-                  <div class="col-xs-10">{{ strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses }}</div>
-                  <div class="col-xs-2">0</div>
-                </li>
-              </ul>
+              <div class="col-xs-10">{{ strings.pensionExpenses || enpack.pensionExpenses }}</div>
+              <div class="col-xs-2">{{getSalesOf("pensionExpenses")}}</div>
             </li>
             <li>
-              <div class="col-xs-10">{{ strings.staffExpensesTotal || enpack.staffExpensesTotal }}</div>
-              <div class="col-xs-2">0</div>
+              <div class="col-xs-10">{{ strings.otherSocialSecurityExpenses || enpack.otherSocialSecurityExpenses }}</div>
+              <div class="col-xs-2">{{getSalesOf("otherSocialSecurityExpenses")}}</div>
             </li>
           </ul>
-        </li>
-        <li><div class="col-xs-12">{{ strings.depreciationsAndReductionsInValue || enpack.depreciationsAndReductionsInValue }}</div></li>
-        <li>
-          <ul>
-            <li>
-              <div class="col-xs-10">{{ strings.depreciationsAccordingToPlan || enpack.depreciationsAccordingToPlan }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.reductionsInValue || enpack.reductionsInValue }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.depreciationsAndReductionsInValueTotal || enpack.depreciationsAndReductionsInValueTotal }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-          </ul>
-        </li>
-        <li><div class="col-xs-12">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div></li>
-        <li>
-          <ul>
-            <li>
-              <div class="col-xs-10">{{ strings.optionalStaffExpenses || enpack.optionalStaffExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.apartmentExpenses || enpack.apartmentExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.vechileExpenses || enpack.vechileExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.computerDeviceAndSoftware || enpack.computerDeviceAndSoftware }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.shorttermEquipment || enpack.shorttermEquipment }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.travelExpenses || enpack.travelExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.representationExpenses || enpack.representationExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.salesAndMarketingExpenses || enpack.salesAndMarketingExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.researchAndDevelopmentExpenses || enpack.researchAndDevelopmentExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.admistrationExpenses || enpack.admistrationExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{ strings.otherOperatingExpensesTotal || enpack.otherOperatingExpensesTotal }}</div>
-              <div class="col-xs-2">0</div>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.operatingProfitLoss || enpack.operatingProfitLoss }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.financialIncome || enpack.financialIncome }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.financialExpenses || enpack.financialExpenses }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.profitLossBeforeAppropriationsAndTaxes || enpack.profitLossBeforeAppropriationsAndTaxes }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.appropriationsIncome || enpack.appropriationsIncome }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.appropriationsExpense || enpack.appropriationsExpense }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.incomeTaxes || enpack.incomeTaxes }}</div>
-          <div class="col-xs-2">0</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{ strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear }}</div>
-          <div class="col-xs-2">0</div>
         </li>
       </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.depreciationsAndReductionsInValue || enpack.depreciationsAndReductionsInValue }}</div>
+      <div class="col-xs-2"><b>{{getSalesOf("depreciationsAccordingToPlan")+getSalesOf("reductionsInValue")}}</b></div>
+    </li>
+    <li>
+      <ul>
+        <li>
+          <div class="col-xs-10">{{ strings.depreciationsAccordingToPlan || enpack.depreciationsAccordingToPlan }}</div>
+          <div class="col-xs-2">{{getSalesOf("depreciationsAccordingToPlan")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.reductionsInValue || enpack.reductionsInValue }}</div>
+          <div class="col-xs-2">{{getSalesOf("reductionsInValue")}}</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div>
+      <div class="col-xs-2"><b>{{getOtherOperatingExpenses()}}</b></div>
+    </li>
+    <li>
+      <ul>
+        <li>
+          <div class="col-xs-10">{{ strings.optionalStaffExpenses || enpack.optionalStaffExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("optionalStaffExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.apartmentExpenses || enpack.apartmentExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("apartmentExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.vechileExpenses || enpack.vechileExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("vechileExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.computerDeviceAndSoftware || enpack.computerDeviceAndSoftware }}</div>
+          <div class="col-xs-2">{{getSalesOf("computerDeviceAndSoftware")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.shorttermEquipment || enpack.shorttermEquipment }}</div>
+          <div class="col-xs-2">{{getSalesOf("shorttermEquipment")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.travelExpenses || enpack.travelExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("travelExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.representationExpenses || enpack.representationExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("representationExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.salesAndMarketingExpenses || enpack.salesAndMarketingExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("salesAndMarketingExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.researchAndDevelopmentExpenses || enpack.researchAndDevelopmentExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("researchAndDevelopmentExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.admistrationExpenses || enpack.admistrationExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("admistrationExpenses")}}</div>
+        </li>
+        <li>
+          <div class="col-xs-10">{{ strings.otherOperatingExpenses || enpack.otherOperatingExpenses }}</div>
+          <div class="col-xs-2">{{getSalesOf("otherOperatingExpenses")}}</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.operatingProfitLoss || enpack.operatingProfitLoss }}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.financialIncome || enpack.financialIncome }}</div>
+      <div class="col-xs-2">{{getSalesOf("financialIncome")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.financialExpenses || enpack.financialExpenses }}</div>
+      <div class="col-xs-2">{{getSalesOf("financialExpenses")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.profitLossBeforeAppropriationsAndTaxes || enpack.profitLossBeforeAppropriationsAndTaxes }}</div>
+      <div class="col-xs-2">0</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.appropriationsIncome || enpack.appropriationsIncome }}</div>
+      <div class="col-xs-2">{{getSalesOf("appropriationsIncome")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.appropriationsExpense || enpack.appropriationsExpense }}</div>
+      <div class="col-xs-2">{{getSalesOf("appropriationsExpense")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.incomeTaxes || enpack.incomeTaxes }}</div>
+      <div class="col-xs-2">{{getSalesOf("incomeTaxes")}}</div>
+    </li>
+    <li>
+      <div class="col-xs-10">{{ strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear }}</div>
+      <div class="col-xs-2">0</div>
     </li>
   </ul>
 

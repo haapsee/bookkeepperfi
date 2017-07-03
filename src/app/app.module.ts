@@ -16,11 +16,11 @@ import { AssetsColumnComponent } from './assets-column/assets-column.component';
 import { ProfitcolumnComponent } from './profitcolumn/profitcolumn.component';
 
 const appRoutes: Routes = [
-  { path: '', component: SoftwarepageComponent },
+  { path: '', component: HomepageComponent },
   { path: 'home', component: HomepageComponent },
-  { path: 'fi/software', component: SoftwarepageComponent },
-  { path: 'se/software', component: SoftwarepageComponent },
-  { path: 'en/software', component: SoftwarepageComponent }
+  { path: 'fi', component: SoftwarepageComponent },
+  { path: 'se', component: SoftwarepageComponent },
+  { path: 'en', component: SoftwarepageComponent }
 ];
 
 @NgModule({

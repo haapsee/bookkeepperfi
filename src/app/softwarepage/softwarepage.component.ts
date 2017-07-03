@@ -4,6 +4,7 @@ import { LanpackService } from "../lanpack.service";
 import { StorageService } from "../storage.service";
 import { AssetsColumnComponent } from "../assets-column/assets-column.component";
 import { ProfitcolumnComponent } from "../profitcolumn/profitcolumn.component";
+import { Item } from "../item";
 
 @Component({
   selector: 'app-softwarepage',
@@ -20,6 +21,7 @@ export class SoftwarepageComponent implements OnInit {
   itemSubHeader: any;
   alv:any;
   costsell:any;
+  hello:any = 1;
 
 
   // language data
@@ -31,19 +33,18 @@ export class SoftwarepageComponent implements OnInit {
 
   constructor(private ts: StorageService, private router: Router, private lanservice: LanpackService,
     private assetsCol: AssetsColumnComponent) {
-    /*if(this.router.url == "/se/software"){
-      this.language = "sweden";
-    }else if(this.router.url == "/fi/software"){
-      this.language = "suomi";
+      this.ts.save(this.items);
+    if(this.router.url == "/se"){
+      this.lan = "se";
+    }else if(this.router.url == "/fi"){
+      this.lan = "fi";
     }else{
-      this.language = "english";
+      this.lan = "en";
     }/**/
     //console.log(this.strings);
     //console.log(this.router.url.split("/"));
     this.strings = this.lanservice.getPack(this.lan);
-    this.enpack = this.lanservice.getPack("en");
-
-    this.timeOutFunction();
+    this.enpack = this.lanservice.getPack("en");;
   }
 
   buttonDisabled(){
@@ -55,28 +56,32 @@ export class SoftwarepageComponent implements OnInit {
     }
   }
 
-  timeOutFunction(){
-    console.log(this.creditordebit);
-
-    if(this.creditordebit == "credit"){
-
-    }
-
-    setTimeout(() => {
-      this.timeOutFunction();
-    }, 1000);
+  remove(index){
+    this.items.splice(index, 1);
+    for(let i= 0; i < this.items.length; i++){ this.items[i].setIndex(i); }
+    this.ts.save(this.items);
   }
 
   buttonClicked(){
     if(this.buttonDisabled()!="disabled"){
-      this.items.push("lol");
+      let item = new Item(this.costsell, this.alv, this.itemHeader,
+        this.itemSubHeader, this.creditordebit, this.items.length);
+
+      this.items.push(item);
+/**/
       this.alv=undefined;
       this.costsell=undefined;
       this.itemSubHeader=undefined;
       this.itemHeader=undefined;
-      this.creditordebit=undefined;
+      this.creditordebit=undefined;/**/
+      this.ts.save(this.items);
     }
   }
+
+  getVatAmount(item){
+    return Math.round(item.getMoney() * item.getVat())/100;
+  }
+
 
   ngOnInit() { }
 

@@ -1,9 +1,10 @@
 export class Init{
-  write(){
-    localStorage.setItem("todos", "sodot");
+  write(x){
+    localStorage.setItem("data", x);
   }
 
   load(){
-    console.log(localStorage.getItem("todos"));
+    console.log(localStorage.getItem("data"));
+    return localStorage.getItem("data");
   }
 }
