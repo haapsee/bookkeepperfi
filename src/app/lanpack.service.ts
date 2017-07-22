@@ -77,6 +77,7 @@ export class LanpackService {
       profitLossOfTheFinancialYear: "Profit (loss) of the financial year",
       provisions: "Provisions",
       purchasesDuringTheFinancialYear: "Purchases during the financial year",
+      purchasesDuringTheFinancialYearTradeCreditors: "Purchases during the financial year, trade creditors",
 
       rawMaterialsAndConsumables: "Raw materials and consumables",
       rawMaterialsAndConsumablesTotal: "Raw materials and consumables, total",
@@ -106,6 +107,7 @@ export class LanpackService {
       tradeDebtors: "Trade debtors",
       travelExpenses: "Travel expenses",
       turnoverNetSales: "Turnover (net sales)",
+      turnoverTradeDebtors: "Turnover, trade debtors",
 
       variationsInStocks: "Variations in stocks",
       vat: "VAT",

@@ -21,9 +21,9 @@ export class ProfitcolumnComponent implements OnInit {
       for(let i = 0; i < data.length; i++){
         if(data[i]["subHeader"]==y){
           if(data[i]["cOrD"]=="debit"){
-            x -= (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
           }else{
-            x += (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
           }
         }
       } return Math.round(x * 100) / 100;
@@ -40,9 +40,9 @@ export class ProfitcolumnComponent implements OnInit {
         console.log((data[i]["subHeader"] == y) + " " + (data[i]["header"] == z));
         if(data[i]["subHeader"]==y&&data[i]["header"]==z){
           if(data[i]["cOrD"]=="debit"){
-            x -= (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
           }else{
-            x += (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
           }
         }
       } return Math.round(x * 100) / 100;
@@ -60,14 +60,41 @@ export class ProfitcolumnComponent implements OnInit {
       for(let i = 0; i < data.length; i++){
         if(arr.includes(data[i]["subHeader"])){
           if(data[i]["cOrD"]=="debit"){
-            x -= (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x -= (data[i]["money"] / (1 + data[i]["vat"]/100));
           }else{
-            x += (data[i]["money"] * ((100 - data[i]["vat"])/100));
+            x += (data[i]["money"] / (1 + data[i]["vat"]/100));
           }
         }
       } return Math.round(x * 100) / 100;
 
     }catch(err){ return 0; }
+  }
+
+  getPurchasesDuring(){
+    try{
+      let x = 0;
+      let data = JSON.parse(this.ts.getData());
+      for(let i = 0; i < data.length; i++){
+        if(data[i]["subHeader"]=="purchasesDuringTheFinancialYearTradeCreditors"||
+            data[i]["subHeader"]=="purchasesDuringTheFinancialYear"){
+          if(data[i]["cOrD"]=="debit"){ x -= (data[i]["money"] / (1 + data[i]["vat"]/100)); }
+          else{ x += (data[i]["money"] / (1 + data[i]["vat"]/100)); }
+        }
+      } return Math.round(x * 100) / 100;
+    } catch(err){ return 0; }
+  }
+
+  getVariationsInStock(){
+    try{
+      let x = 0;
+      let data = JSON.parse(this.ts.getData());
+      for(let i = 0; i < data.length; i++){
+        if(data[i]["subHeader"]=="stocks"){
+          if(data[i]["cOrD"]=="debit"){ x -= data[i]["money"]; }
+          else{ x += data[i]["money"]; }
+        }
+      } return Math.round(x * 100) / 100 + this.getSalesOf("variationsInStock");;
+    } catch(err){ return 0; }
   }
 
 

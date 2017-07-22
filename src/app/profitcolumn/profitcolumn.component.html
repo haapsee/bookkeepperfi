@@ -7,7 +7,7 @@
   <ul>
     <li>
       <div class="col-xs-10">{{ strings.turnoverNetSales || enpack.turnoverNetSales }}</div>
-      <div class="col-xs-2">{{getSalesOf("turnoverNetSales")}}</div>
+      <div class="col-xs-2">{{getSalesOf("turnoverNetSales") + getSalesOf("turnoverTradeDebtors")}}</div>
     </li>
     <li>
       <div class="col-xs-10">{{ strings.otherOperatingIncome || enpack.otherOperatingIncome }}</div>
@@ -19,18 +19,18 @@
         <li>
           <div class="col-xs-10">{{ strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables }}</div>
           <div class="col-xs-2">
-            <b>{{getSalesOf("purchasesDuringTheFinancialYear")+getSalesOf("variationsInStocks")}}</b>
+            <b>{{getPurchasesDuring()+getVariationsInStock()}}</b>
           </div>
         </li>
         <li>
           <ul>
             <li>
               <div class="col-xs-10">{{ strings.purchasesDuringTheFinancialYear || enpack.purchasesDuringTheFinancialYear }}</div>
-              <div class="col-xs-2">{{getSalesOf("purchasesDuringTheFinancialYear")}}</div>
+              <div class="col-xs-2">{{getPurchasesDuring()}}</div>
             </li>
             <li>
               <div class="col-xs-10">{{ strings.variationsInStocks || enpack.variationsInStocks }}</div>
-              <div class="col-xs-2">{{getSalesOf("variationsInStocks")}}</div>
+              <div class="col-xs-2">{{getVariationsInStock()}}</div>
             </li>
           </ul>
         </li>
