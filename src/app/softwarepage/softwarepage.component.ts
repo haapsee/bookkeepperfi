@@ -68,7 +68,7 @@ export class SoftwarepageComponent implements OnInit {
         this.itemSubHeader, this.creditordebit, this.items.length);
 
       this.items.push(item);
-/*
+
       this.alv=undefined;
       this.costsell=undefined;
       this.itemSubHeader=undefined;
@@ -79,7 +79,8 @@ export class SoftwarepageComponent implements OnInit {
   }
 
   getVatAmount(item){
-    return item.getMoney() - Math.round(item.getMoney() / (1 + item.getVat() / 100));
+    return Math.round((item.getMoney() - Math.round((item.getMoney() /
+      (1 + item.getVat() / 100)) * 100) / 100)* 100) /100;
   }
 
 

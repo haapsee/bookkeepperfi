@@ -18,4 +18,13 @@ export class StorageService extends Init {
   getData(){
     return this.load();
   }
+
+  writeT(x){
+    this.writeTotal(x);
+  }
+
+  loadT(){
+    super.loadTotal();
+  }
+
 }

@@ -55,10 +55,10 @@
                   <div>
                     <select class="form-control" id="itemHeader" [(ngModel)]="itemHeader">
                       <option value="income">{{strings.income || enpack.income}}</option>
-                      <option value="debtor">{{strings.debtor || enpack.debtor}}</option>
-                      <option value="cashOrBank">{{strings.cashOrBank || enpack.cashOrBank}}</option>
                       <option value="shorttermExpenses">{{strings.shorttermExpenses || enpack.shorttermExpenses}}</option>
                       <option value="longtermExpenses">{{strings.longtermExpenses || enpack.longtermExpenses}}</option>
+                      <option value="debtor">{{strings.debtor || enpack.debtor}}</option>
+                      <!--<option value="cashOrBank">{{strings.cashOrBank || enpack.cashOrBank}}</option>-->
                       <option value="capital">{{strings.capital || enpack.capital}}</option>
                       <option value="loanOrDebt">{{strings.loanOrDebt || enpack.loanOrDebt}}</option>
                     </select>
@@ -84,7 +84,6 @@
                         <option value="revaluationReserve">{{strings.revaluationReserve || enpack.revaluationReserve}}</option>
                         <option value="otherReserves">{{strings.otherReserves || enpack.otherReserves}}</option>
                         <option value="retairnedEarnings">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</option>
-                        <option value="profitLossOfTheFinancialYear">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</option>
                       </select>
                     </div>
                     <div *ngSwitchCase="'longtermExpenses'">
@@ -93,7 +92,6 @@
                         <option value="buildings">{{strings.buildings || enpack.buildings}}</option>
                         <option value="machineryAndEquipment">{{strings.machineryAndEquipment || enpack.machineryAndEquipment}}</option>
                         <option value="investments">{{strings.investments || enpack.investments}}</option>
-                        <option value="stocks">{{strings.stocks || enpack.stocks}}</option>
                       </select>
                     </div>
                     <div *ngSwitchCase="'shorttermExpenses'">
@@ -102,7 +100,7 @@
                           {{strings.purchasesDuringTheFinancialYear || enpack.purchasesDuringTheFinancialYear}}
                         </option>
                         <option value="purchasesDuringTheFinancialYearTradeCreditors">
-                          {{strings.purchasesDuringTheFinancialYearTradeCreditors || enpack.purchasesDuringTheFinancialYearTradeCreditors}}
+                          {{strings.purchasesDuringTheFinancialYear || enpack.purchasesDuringTheFinancialYear}}
                         </option>
                         <option value="variationsInStocks">
                           {{strings.variationsInStocks || enpack.variationsInStocks}}
@@ -143,12 +141,13 @@
                         <option value="longterm">{{strings.longterm || enpack.longterm}}</option>
                         <option value="tradeDebtors">{{strings.tradeDebtors || enpack.tradeDebtors}}</option>
                         <option value="otherReceivables">{{strings.otherReceivables || enpack.otherReceivables}}</option>
+                        <option value="stocks">{{strings.stocks || enpack.stocks}}</option>
+                        <option value="cashInHandAndInBank">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</option>
+                        <option value="investments">{{strings.investments || enpack.investments}}</option>
                       </select>
                     </div>
                     <div *ngSwitchCase="'cashOrBank'">
                       <select class="form-control" id="itemSubHeader" [(ngModel)]="itemSubHeader">
-                        <!--<option value="cashInHandAndInBank">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</option>-->
-                        <option value="investments">{{strings.investments || enpack.investments}}</option>
                       </select>
                     </div>
                     <div *ngSwitchDefault>

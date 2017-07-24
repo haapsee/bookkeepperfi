@@ -66,7 +66,6 @@ export class ProfitcolumnComponent implements OnInit {
           }
         }
       } return Math.round(x * 100) / 100;
-
     }catch(err){ return 0; }
   }
 
@@ -93,10 +92,54 @@ export class ProfitcolumnComponent implements OnInit {
           if(data[i]["cOrD"]=="debit"){ x -= data[i]["money"]; }
           else{ x += data[i]["money"]; }
         }
-      } return Math.round(x * 100) / 100 + this.getSalesOf("variationsInStock");;
+      } return Math.round(x * 100) / 100 + this.getSalesOf("variationsInStock");
     } catch(err){ return 0; }
   }
 
+  getRawMaterialsAndConsumables(){
+    return this.getVariationsInStock() + this.getPurchasesDuring();
+  }
+
+  getRawMaterialsAndServices(){
+    return this.getRawMaterialsAndConsumables() +
+      this.getSalesOf("externalServices");
+  }
+
+  getSocialSecurityExpenses(){
+    return this.getSalesOf("pensionExpenses") +
+      this.getSalesOf("otherSocialSecurityExpenses");
+  }
+
+  getStaffExpenses(){
+    return this.getSocialSecurityExpenses() + this.getSalesOf("wagesAndSalaries");
+  }
+
+  getDARIV(){
+    return Math.round((this.getSalesOf("depreciationsAccordingToPlan") +
+      this.getSalesOf("reductionsInValue")) * 100) / 100;
+  }
+
+  getOperatingProftiLoss(){
+    return Math.round((this.getSalesOf("turnoverNetSales") +
+      this.getSalesOf("turnoverTradeDebtors") +
+      this.getSalesOf("otherOperatingIncome") + this.getRawMaterialsAndServices() +
+      this.getStaffExpenses() + this.getDARIV() +
+      this.getOtherOperatingExpenses()) * 100) / 100;
+  }
+
+  getProfitLossB4AppropriationsAndTaxes(){
+    return Math.round((this.getOperatingProftiLoss() +
+      this.getSalesOf("financialIncome") +
+      this.getSalesOf("financialExpenses")) * 100) / 100;
+  }
+
+  getProfLossFinancialYear(){
+    let num: number = Math.round((this.getProfitLossB4AppropriationsAndTaxes() +
+      this.getSalesOf("appropriationsIncome") + this.getSalesOf("appropriationsExpenses") +
+      this.getSalesOf("incomeTaxes")) * 100) / 100;
+    this.ts.writeT(num);
+    return num;
+  }
 
   ngOnInit() { }
 

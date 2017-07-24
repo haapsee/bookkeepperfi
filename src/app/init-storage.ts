@@ -4,7 +4,15 @@ export class Init{
   }
 
   load(){
-    console.log(localStorage.getItem("data"));
     return localStorage.getItem("data");
+  }
+
+  writeTotal(x){
+    localStorage.setItem("total", x);
+  }
+
+  loadTotal(){
+    console.log(localStorage.getItem("total"));
+    return localStorage.getItem("total");
   }
 }

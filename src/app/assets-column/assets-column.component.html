@@ -88,7 +88,7 @@
             </li>
             <li>
               <div class="col-xs-10">{{strings.investments || enpack.investments}}</div>
-              <div class="col-xs-2">{{getSalesOfOf("cashOrBank", "investments")}}</div>
+              <div class="col-xs-2">{{getSalesOfOf("debtor", "investments")}}</div>
             </li>
             <li>
               <div class="col-xs-10">{{strings.cashInHandAndInBank || enpack.cashInHandAndInBank}}</div>
@@ -107,30 +107,33 @@
     <li><div class="col-xs-12">{{strings.equityAndLiabilities || enpack.equityAndLiabilities}}</div></li>
     <li>
       <ul>
-        <li><div class="col-xs-12">{{strings.capitalAndReserves || enpack.capitalAndReserves}}</div></li>
         <li>
-          <div class="col-xs-10">{{strings.subscribedCapital || enpack.subscribedCapital}}</div>
-          <div class="col-xs-2">{{getSalesOf("subscribedCapital")}}</div>
+          <div class="col-xs-10">{{strings.capitalAndReserves || enpack.capitalAndReserves}}</div>
+          <div class="col-xs-2">{{getCapitalAndReserves()}}</div>
         </li>
         <li>
-          <div class="col-xs-10">{{strings.revaluationReserve || enpack.revaluationReserve}}</div>
-          <div class="col-xs-2">{{getSalesOf("revaluationReserve")}}</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.otherReserves || enpack.otherReserves}}</div>
-          <div class="col-xs-2">{{getSalesOf("otherReserves")}}</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</div>
-          <div class="col-xs-2">{{getSalesOf("retairnedEarnings")}}</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</div>
-          <div class="col-xs-2">{{getSalesOf("profitLossOfTheFinancialYear")}}</div>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.capitalAndReservesTotal || enpack.capitalAndReservesTotal}}</div>
-          <div class="col-xs-2">0</div>
+          <ul>
+            <li>
+              <div class="col-xs-10">{{strings.subscribedCapital || enpack.subscribedCapital}}</div>
+              <div class="col-xs-2">{{getSalesOf("subscribedCapital")}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.revaluationReserve || enpack.revaluationReserve}}</div>
+              <div class="col-xs-2">{{getSalesOf("revaluationReserve")}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.otherReserves || enpack.otherReserves}}</div>
+              <div class="col-xs-2">{{getSalesOf("otherReserves")}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.retairnedEarnings || enpack.retairnedEarnings}}</div>
+              <div class="col-xs-2">{{getSalesOf("retairnedEarnings")}}</div>
+            </li>
+            <li>
+              <div class="col-xs-10">{{strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear}}</div>
+              <div class="col-xs-2">{{getProfLossFinancialYear() || 0}}</div>
+            </li>
+          </ul>
         </li>
         <li>
           <div class="col-xs-10">{{strings.appropriations || enpack.appropriations}}</div>
@@ -142,46 +145,45 @@
         </li>
         <li>
           <div class="col-xs-10">{{strings.creditors || enpack.creditors}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-2">{{getCreditors()}}</div>
         </li>
-        <li>
-          <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
-          <div class="col-xs-2">{{getSalesOfOf("loanOrDebt", "longterm")}}</div>
-        </li>
-        <li><div class="col-xs-12">{{strings.shortterm || enpack.shortterm}}</div></li>
         <li>
           <ul>
             <li>
-              <div class="col-xs-10">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</div>
-              <div class="col-xs-2">{{getSalesOf("loansFromCreditInstitutions")}}</div>
+              <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+              <div class="col-xs-2">{{getSalesOfOf("loanOrDebt", "longterm")}}</div>
             </li>
             <li>
-              <div class="col-xs-10">{{strings.tradeCreditors || enpack.tradeCreditors}}</div>
-              <div class="col-xs-2">{{getTradeCreditors()}}</div>
+              <div class="col-xs-10">{{strings.shortterm || enpack.shortterm}}</div>
+              <div class="col-xs-2">{{getEALShort()}}</div>
             </li>
             <li>
-              <div class="col-xs-10">{{strings.vatDebt || enpack.vatDebt}}</div>
-              <div class="col-xs-2">{{getVatDebt()}}</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{strings.otherCreditors || enpack.otherCreditors}}</div>
-              <div class="col-xs-2">{{getSalesOf("otherCreditors")}}</div>
-            </li>
-            <li>
-              <div class="col-xs-10">{{strings.shorttermCreditorsTotal || enpack.shorttermCreditorsTotal}}</div>
-              <div class="col-xs-2">0</div>
+              <ul>
+                <li>
+                  <div class="col-xs-10">{{strings.loansFromCreditInstitutions || enpack.loansFromCreditInstitutions}}</div>
+                  <div class="col-xs-2">{{getSalesOf("loansFromCreditInstitutions")}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.tradeCreditors || enpack.tradeCreditors}}</div>
+                  <div class="col-xs-2">{{getTradeCreditors()}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.vatDebt || enpack.vatDebt}}</div>
+                  <div class="col-xs-2">{{getVatDebt()}}</div>
+                </li>
+                <li>
+                  <div class="col-xs-10">{{strings.otherCreditors || enpack.otherCreditors}}</div>
+                  <div class="col-xs-2">{{getSalesOf("otherCreditors")}}</div>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-        <li>
-          <div class="col-xs-10">{{strings.creditorsTotal || enpack.creditorsTotal}}</div>
-          <div class="col-xs-2">0</div>
         </li>
       </ul>
     </li>
     <li>
       <div class="col-xs-10">{{strings.equityAndLiabilitiesTotal || enpack.equityAndLiabilitiesTotal}}</div>
-      <div class="col-xs-2">0</div>
+      <div class="col-xs-2">{{getEquityTotal()}}</div>
     </li>
   </ul>
 </div>

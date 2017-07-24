@@ -13,13 +13,16 @@
       <div class="col-xs-10">{{ strings.otherOperatingIncome || enpack.otherOperatingIncome }}</div>
       <div class="col-xs-2">{{getSalesOf("otherOperatingIncome")}}</div>
     </li>
-    <li><div class="col-xs-12">{{ strings.rawMaterialsAndServices || enpack.rawMaterialsAndServices }}</div></li>
+    <li>
+      <div class="col-xs-10">{{ strings.rawMaterialsAndServices || enpack.rawMaterialsAndServices }}</div>
+      <div class="col-xs-2">{{getRawMaterialsAndServices()}}</div>
+    </li>
     <li>
       <ul>
         <li>
           <div class="col-xs-10">{{ strings.rawMaterialsAndConsumables || enpack.rawMaterialsAndConsumables }}</div>
           <div class="col-xs-2">
-            <b>{{getPurchasesDuring()+getVariationsInStock()}}</b>
+            <b>{{getRawMaterialsAndConsumables()}}</b>
           </div>
         </li>
         <li>
@@ -34,20 +37,16 @@
             </li>
           </ul>
         </li>
+        <li>
+          <div class="col-xs-10">{{ strings.externalServices || enpack.externalServices }}</div>
+          <div class="col-xs-2">{{getSalesOf("externalServices")}}</div>
+        </li>
       </ul>
-    </li>
-    <li>
-      <div class="col-xs-10">{{ strings.externalServices || enpack.externalServices }}</div>
-      <div class="col-xs-2">{{getSalesOf("externalServices")}}</div>
-    </li>
-    <li>
-      <div class="col-xs-10">{{ strings.rawMaterialsAndServicesTotal || enpack.rawMaterialsAndServicesTotal }}</div>
-      <div class="col-xs-2">0</div>
     </li>
     <li>
       <div class="col-xs-10">{{ strings.staffExpenses || enpack.staffExpenses }}</div>
       <div class="col-xs-2"><b>
-        {{getSalesOf("wagesAndSalaries")+getSalesOf("pensionExpenses")+getSalesOf("otherSocialSecurityExpenses")}}
+        {{getStaffExpenses()}}
       </b></div>
     </li>
     <li>
@@ -56,7 +55,10 @@
           <div class="col-xs-10">{{ strings.wagesAndSalaries || enpack.wagesAndSalaries }}</div>
           <div class="col-xs-2">{{getSalesOf("wagesAndSalaries")}}</div>
         </li>
-        <li><div class="col-xs-12">{{ strings.socialSecurityExpenses || enpack.socialSecurityExpenses }}</div></li>
+        <li>
+          <div class="col-xs-10">{{ strings.socialSecurityExpenses || enpack.socialSecurityExpenses }}</div>
+          <div class="col-xs-2">{{getSocialSecurityExpenses()}}</div>
+        </li>
         <li>
           <ul>
             <li>
@@ -73,7 +75,7 @@
     </li>
     <li>
       <div class="col-xs-10">{{ strings.depreciationsAndReductionsInValue || enpack.depreciationsAndReductionsInValue }}</div>
-      <div class="col-xs-2"><b>{{getSalesOf("depreciationsAccordingToPlan")+getSalesOf("reductionsInValue")}}</b></div>
+      <div class="col-xs-2"><b>{{getDARIV()}}</b></div>
     </li>
     <li>
       <ul>
@@ -141,7 +143,7 @@
     </li>
     <li>
       <div class="col-xs-10">{{ strings.operatingProfitLoss || enpack.operatingProfitLoss }}</div>
-      <div class="col-xs-2">0</div>
+      <div class="col-xs-2">{{getOperatingProftiLoss()}}</div>
     </li>
     <li>
       <div class="col-xs-10">{{ strings.financialIncome || enpack.financialIncome }}</div>
@@ -153,7 +155,7 @@
     </li>
     <li>
       <div class="col-xs-10">{{ strings.profitLossBeforeAppropriationsAndTaxes || enpack.profitLossBeforeAppropriationsAndTaxes }}</div>
-      <div class="col-xs-2">0</div>
+      <div class="col-xs-2">{{getProfitLossB4AppropriationsAndTaxes()}}</div>
     </li>
     <li>
       <div class="col-xs-10">{{ strings.appropriationsIncome || enpack.appropriationsIncome }}</div>
@@ -169,7 +171,7 @@
     </li>
     <li>
       <div class="col-xs-10">{{ strings.profitLossOfTheFinancialYear || enpack.profitLossOfTheFinancialYear }}</div>
-      <div class="col-xs-2">0</div>
+      <div class="col-xs-2">{{getProfLossFinancialYear()}}</div>
     </li>
   </ul>
 
