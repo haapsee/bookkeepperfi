@@ -14,6 +14,11 @@ import { Item } from "../item";
 })
 export class SoftwarepageComponent implements OnInit {
 
+  version: any = {
+    fi: "0.1.1",
+    en: "0.1",
+    se: "0.1"
+  };
 
   // form data
   creditordebit:any;
@@ -22,6 +27,7 @@ export class SoftwarepageComponent implements OnInit {
   alv:any;
   costsell:any;
   hello:any = 1;
+  closeall:any=false;
 
 
   // language data
@@ -44,7 +50,19 @@ export class SoftwarepageComponent implements OnInit {
     //console.log(this.strings);
     //console.log(this.router.url.split("/"));
     this.strings = this.lanservice.getPack(this.lan);
-    this.enpack = this.lanservice.getPack("en");;
+    this.enpack = this.lanservice.getPack("en");
+
+    console.log(this.ts.getCurrentVersion(this.lan));
+
+    if(this.ts.getCurrentVersion(this.lan)==undefined||
+        this.ts.getCurrentVersion(this.lan)!=this.version[this.lan]){
+      this.ts.setCurrentVersion([this.version[this.lan], this.lan]);
+      window.location.reload(true);
+    }
+  }
+
+  loglog(){
+    this.itemSubHeader=undefined;
   }
 
   buttonDisabled(){
@@ -68,6 +86,7 @@ export class SoftwarepageComponent implements OnInit {
         this.itemSubHeader, this.creditordebit, this.items.length);
 
       this.items.push(item);
+
 
       this.alv=undefined;
       this.costsell=undefined;

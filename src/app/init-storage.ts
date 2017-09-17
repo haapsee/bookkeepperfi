@@ -12,7 +12,15 @@ export class Init{
   }
 
   loadTotal(){
-    console.log(localStorage.getItem("total"));
+    // console.log(localStorage.getItem("total"));
     return localStorage.getItem("total");
+  }
+
+  getCurrentVersion(x){
+    return localStorage.getItem("version" + x);
+  }
+
+  setCurrentVersion(x){
+    localStorage.setItem("version" + x[1], x[0]);
   }
 }

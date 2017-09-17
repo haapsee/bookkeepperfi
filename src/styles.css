@@ -66,3 +66,11 @@ ul {
 div{
   color: #000 !important;
 }
+
+.otsikko{
+  text-transform: uppercase;
+}
+
+/*sub{
+  float: left;
+}*/

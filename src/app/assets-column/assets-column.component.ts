@@ -12,10 +12,43 @@ import { StorageService } from "../storage.service";
 })
 export class AssetsColumnComponent implements OnInit {
 
-    @Input() strings: any;
-    @Input() enpack: any;
+      @Input() strings: any;
+      @Input() enpack: any;
 
-    constructor(private ts: StorageService) { }
+    constructor(private ts: StorageService) {
+    }
+
+
+    theMatch(){
+      let x = this.getEquityTotal() + this.getAssets();
+      return x <= .5 && x >= -.5;
+    }
+
+    allDropdowns: any = [
+      "debtors",
+      "tangibleAssets",
+      "capitalAndReserves",
+      "creditors"
+    ];
+    dropdownArray: any = [];
+    toggleDropdown(x){
+      if(this.dropdownArray.includes(x)){
+        this.dropdownArray.splice(this.dropdownArray.indexOf(x), 1);
+      } else{ this.dropdownArray.push(x); }
+    }
+    dropdownToggler(x){ return this.dropdownArray.includes(x); }
+    openAll(){
+      for(let i = 0; i < this.allDropdowns.length; i++){
+        if(!this.dropdownArray.includes(this.allDropdowns[i])){
+          this.dropdownArray.push(this.allDropdowns[i]);
+        }
+      }
+    }
+    closeAll(){ this.dropdownArray = []; }
+    topBottom(x){
+      if(this.dropdownArray.includes(x)){ return "top"; } 
+      else{ return "bottom"; }
+    }
 
     getSalesOf(y){
       try{
@@ -24,25 +57,26 @@ export class AssetsColumnComponent implements OnInit {
         for(let i = 0; i < data.length; i++){
           if(data[i]["subHeader"]==y){
             if(data[i]["cOrD"]=="debit"){
-              x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              if(data[i]["header"]=="longtermExpenses" ||
+                  (data[i]["header"]=="debtor"&&data[i]["subHeader"]!="stocks") ||
+                  data[i]["header"]=="capital"||data[i]["header"]=="loanOrDebt"){
+                x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }else{
+                x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }
             }else{
-              x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              if(data[i]["header"]=="longtermExpenses" ||
+                  (data[i]["header"]=="debtor"&&data[i]["subHeader"]!="stocks") ||
+                  data[i]["header"]=="capital"||data[i]["header"]=="loanOrDebt"){
+                x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }else{
+                x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }
             }
           }
-        } return Math.round(x * 100) / 100;
+        }
+        return Math.round(x * 100) / 100;
       } catch(err){ return 0; }
-    }
-
-
-    debtors: Boolean = true;
-    toggleDebtors(){
-      if(this.debtors==true){
-        this.debtors=false;
-        return false;
-      }else{
-        this.debtors=true;
-        return true;
-      }
     }
 
     getSalesOfOf(z, y){
@@ -52,9 +86,21 @@ export class AssetsColumnComponent implements OnInit {
         for(let i = 0; i < data.length; i++){
           if( data[i]["subHeader"] == y && data[i]["header"] == z ){
             if(data[i]["cOrD"]=="debit"){
-              x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              if(data[i]["header"]=="longtermExpenses" ||
+                  (data[i]["header"]=="debtor"&&data[i]["subHeader"]!="stocks") ||
+                  data[i]["header"]=="capital"||data[i]["header"]=="loanOrDebt"){
+                x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }else{
+                x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }
             }else{
-              x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              if(data[i]["header"]=="longtermExpenses" ||
+                  (data[i]["header"]=="debtor"&&data[i]["subHeader"]!="stocks") ||
+                  data[i]["header"]=="capital"||data[i]["header"]=="loanOrDebt"){
+                x -= (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }else{
+                x += (data[i]["money"] / (1 + (data[i]["vat"])/100));
+              }
             }
           }
         } return Math.round(x * 100) / 100;
@@ -83,13 +129,9 @@ export class AssetsColumnComponent implements OnInit {
       try{
         let x = 0;
         let data = JSON.parse(this.ts.getData());
-        for(let i = 0; i < data.length; i++){
-          if(data[i]["subHeader"]=="buildings" ||
-              data[i]["subHeader"]=="machineryAndEquipment"){
-            if(data[i]["cOrD"]=="debit"){ x -= (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
-            else{ x += (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
-          }
-        } return Math.round(x * 100) / 100 + this.getSalesOfOf("longtermExpenses", "investments");
+        x+=this.getSalesOf("buildings")+this.getSalesOf("machineryAndEquipment");
+        return Math.round((x + this.getSalesOfOf("longtermExpenses", "investments"))
+          * 100) / 100;
       } catch(err){ return 0; }
     }
 
@@ -102,30 +144,31 @@ export class AssetsColumnComponent implements OnInit {
             if(data[i]["cOrD"]=="debit"){ x -= data[i]["money"]; }
             else{ x += data[i]["money"]; }
           }
-        } return Math.round(x * 100) / 100;
+        } return Math.round(x * 100) / 100 + this.getSalesOfOf("debtor", "tradeDebtors");
       } catch(err){ return 0; }
     }
 
     getShorttermDebtors(){
-      return this.getTradeDebtors() + this.getVatReceivables() +
-          this.getSalesOf("otherReceivables");
+      return  Math.round((this.getTradeDebtors() + this.getVatReceivables() +
+          this.getSalesOf("otherReceivables")) * 100) / 100;
     }
 
     getDebtors(){
-      return this.getSalesOfOf("debtors", "longterm") + this.getShorttermDebtors();
+      return  Math.round((this.getSalesOfOf("debtor", "longterm") + this.getShorttermDebtors()) * 100) / 100;
     }
 
     getCurrentAssets(){
-      return this.getSalesOfOf("debtors", "investments") +
-          this.getCashOrBank() + this.getSalesOf("stocks") + this.getDebtors();
+      return  Math.round((this.getSalesOfOf("debtor", "investments") +
+          this.getCashOrBank() + this.getSalesOf("stocks") + this.getDebtors()) * 100) / 100;
     }
 
     getNonCurrentAssets(){
-      return this.getSalesOf("intangibleAssets") + this.getTangibleAssets();
+      return  Math.round((this.getSalesOf("intangibleAssets") + this.getTangibleAssets()) * 100) / 100;
     }
 
     getAssets(){
-      return this.getNonCurrentAssets() + this.getCurrentAssets();
+      return Math.round((this.getNonCurrentAssets() +
+        this.getCurrentAssets()) * 100) / 100;
     }
 
     getVatReceivables(){
@@ -133,12 +176,18 @@ export class AssetsColumnComponent implements OnInit {
         let arr = ["intangibleAssets", "buildings", "machineryAndEquipment", "purchasesDuringTheFinancialYear",
           "externalServices", "optionalStaffExpenses", "apartmentExpenses", "vechileExpenses",
           "computerDeviceAndSoftware", "shorttermEquipment", "travelExpenses", "representationExpenses",
-          "salesAndMarketingExpenses", "researchAndDevelopmentExpenses", "administrationExpenses", "otherOperatingExpenses"];
+          "salesAndMarketingExpenses", "researchAndDevelopmentExpenses", "administrationExpenses", "otherOperatingExpenses",
+          "purchasesDuringTheFinancialYearTradeCreditors", "admistrationExpenses"];
         let x = 0;
         let data = JSON.parse(this.ts.getData());
         for(let i = 0; i < data.length; i++){
           if(arr.includes(data[i]["subHeader"])){
-            x += data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            if(data[i]["cOrD"]=="credit"){
+              x += data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            }else{
+              x -= data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            }
+
           }
         } return Math.round(x * -100) / 100;
       }catch(err){ return 0; }
@@ -151,7 +200,11 @@ export class AssetsColumnComponent implements OnInit {
         let data = JSON.parse(this.ts.getData());
         for(let i = 0; i < data.length; i++){
           if(arr.includes(data[i]["subHeader"])){
-            x -= data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            if(data[i]["cOrD"]=="debit"){
+              x += data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            }else{
+              x -= data[i]["money"] - (data[i]["money"] / (1 + data[i]["vat"]/100));
+            }
           }
         } return Math.round(x * 100) / 100 + this.getSalesOf("vatDebt");
       }catch(err){ return 0; }
@@ -178,31 +231,31 @@ export class AssetsColumnComponent implements OnInit {
         let data = JSON.parse(this.ts.getData());
         for(let i = 0; i < data.length; i++){
           if(arr.includes(data[i]["subHeader"])){
-        if(data[i]["cOrD"]=="debit"){ x -= (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
-        else{ x += (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
+        if(data[i]["cOrD"]=="debit"){ x += (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
+        else{ x -= (data[i]["money"] / (1 + (data[i]["vat"])/100)); }
           }
         } return 1 * (Math.round(x * 100) / 100 + this.getProfLossFinancialYear());
       }catch(err){ return 0; }
     }
 
     getEALShort(){
-      return this.getSalesOf("loansFromCreditInstitutions") +
+      return Math.round((this.getSalesOf("loansFromCreditInstitutions") +
         this.getTradeCreditors() + this.getVatDebt() +
-        this.getSalesOf("otherCreditors");
+        this.getSalesOf("otherCreditors"))*100)/100;
     }
 
     getCreditors(){
-      return this.getEALShort() + this.getSalesOfOf("loanOrDebt", "longterm");
+      return Math.round((this.getEALShort() + this.getSalesOfOf("loanOrDebt", "longterm"))*100)/100;
     }
 
     getEAL(){
-      return this.getCreditors() + this.getCapitalAndReserves() +
-        this.getSalesOf("appropriations") + this.getSalesOf("provisions");
+      return Math.round((this.getCreditors() + this.getCapitalAndReserves() +
+        this.getSalesOf("appropriations") + this.getSalesOf("provisions"))*100)/100;
     }
 
     getEquityTotal(){
-      return this.getCapitalAndReserves() + this.getSalesOf("approprations") +
-        this.getSalesOf("provisions") + this.getCreditors();
+      return Math.round((this.getCapitalAndReserves() + this.getSalesOf("approprations") +
+        this.getSalesOf("provisions") + this.getCreditors())*100)/100;
     }
 
     ngOnInit() { }
@@ -228,9 +281,7 @@ export class AssetsColumnComponent implements OnInit {
           if(arr.includes(data[i]["subHeader"])){
             if(data[i]["cOrD"]=="debit"){
               x -= (data[i]["money"] / (1 + data[i]["vat"]/100));
-            }else{
-              x += (data[i]["money"] / (1 + data[i]["vat"]/100));
-            }
+            } else{ x += (data[i]["money"] / (1 + data[i]["vat"]/100)); }
           }
         } return Math.round(x * 100) / 100;
       }catch(err){ return 0; }

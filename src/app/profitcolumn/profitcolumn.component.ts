@@ -12,7 +12,33 @@ import { StorageService } from "../storage.service";
 })
 export class ProfitcolumnComponent implements OnInit {
 
-  constructor(private router: Router, private lanservice: LanpackService, private ts: StorageService) { }
+  constructor(private ts: StorageService) { }
+
+  allDropdowns: any = [
+    "rawMaterialsAndServices",
+    "staffExpensess",
+    "depreciationsAndReductionsInValue",
+    "otherOperatingExpenses"
+  ];
+  dropdownArray: any = [];
+  toggleDropdown(x){
+    if(this.dropdownArray.includes(x)){
+      this.dropdownArray.splice(this.dropdownArray.indexOf(x), 1);
+    } else{ this.dropdownArray.push(x); }
+  }
+  dropdownToggler(x){ return this.dropdownArray.includes(x); }
+  openAll(){
+    for(let i = 0; i < this.allDropdowns.length; i++){
+      if(!this.dropdownArray.includes(this.allDropdowns[i])){
+        this.dropdownArray.push(this.allDropdowns[i]);
+      }
+    }
+  }
+  closeAll(){ this.dropdownArray = []; }
+  topBottom(x){
+    if(this.dropdownArray.includes(x)){ return "top"; }
+    else{ return "bottom"; }
+  }
 
   getSalesOf(y){
     try{

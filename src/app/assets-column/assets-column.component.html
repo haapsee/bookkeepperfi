@@ -1,14 +1,20 @@
 <div>
-  <h2>{{ strings.balanceSheet || enpack.balanceSheet }}</h2>
+  <h2>
+    {{ strings.balanceSheet || enpack.balanceSheet }}
+      <button class="btn btn-default glyphicon glyphicon-triangle-bottom"
+        (click)="openAll()"></button>
+      <button class="btn btn-default glyphicon glyphicon-triangle-top"
+        (click)="closeAll()"></button>
+  </h2>
 </div>
 <div>
   <ul>
-    <li><div class="col-xs-12">{{ strings.assets || enpack.assets }}</div></li>
+    <li><div class="col-xs-12"><b>{{ strings.assets || enpack.assets }}</b></div></li>
     <li>
       <ul>
         <li>
-          <div class="col-xs-10">{{ strings.nonCurrentAssets || enpack.nonCurrentAssetsTotal }}</div>
-          <div class="col-xs-2">{{getNonCurrentAssets()}}</div>
+          <div class="col-xs-10 otsikko">{{ strings.nonCurrentAssets || enpack.nonCurrentAssetsTotal }}</div>
+          <div class="col-xs-2"><b>{{getNonCurrentAssets()}}</b></div>
         </li>
         <li>
           <ul>
@@ -16,11 +22,12 @@
               <div class="col-xs-10">{{strings.intangibleAssets || enpack.intangibleAssets}}</div>
               <div class="col-xs-2">{{getSalesOf("intangibleAssets")}}</div>
             </li>
-            <li>
-              <div class="col-xs-10">{{strings.tangibleAssets || enpack.tangibleAssets}}</div>
+            <li (click)="toggleDropdown('tangibleAssets')">
+              <div class="col-xs-10">{{strings.tangibleAssets || enpack.tangibleAssets}}
+                  <sub class="glyphicon glyphicon-triangle-{{topBottom('tangibleAssets')}}"></sub></div>
               <div class="col-xs-2">{{getTangibleAssets()}}</div>
             </li>
-            <li>
+            <li *ngIf="dropdownToggler('tangibleAssets')" >
               <ul>
                 <li>
                   <div class="col-xs-10">{{strings.buildings || enpack.buildings}}</div>
@@ -39,7 +46,7 @@
           </ul>
         </li>
         <li>
-          <div class="col-xs-10">{{strings.currentAssets || enpack.currentAssets}}</div>
+          <div class="col-xs-10 otsikko">{{strings.currentAssets || enpack.currentAssets}}</div>
           <div class="col-xs-2"><b>{{getCurrentAssets()}}</b></div>
         </li>
         <li>
@@ -48,18 +55,17 @@
               <div class="col-xs-10">{{strings.stocks || enpack.stocks}}</div>
               <div class="col-xs-2">{{getSalesOf("stocks")}}</div>
             </li>
-            <!--<li (click)="toggleDebtors()">-->
-            <li>
+            <li (click)="toggleDropdown('debtors')">
               <div class="col-xs-10">
                 {{strings.debtors || enpack.debtors}}
-              <!--<sub class="glyphicon glyphicon-triangle-bottom"></sub>-->
+              <sub class="glyphicon glyphicon-triangle-{{topBottom('debtors')}}"></sub>
               </div>
               <div class="col-xs-2">{{getDebtors()}}</div>
             </li>
             <li>
-              <ul *ngIf="debtors" >
+              <ul *ngIf="dropdownToggler('debtors')" >
                 <li>
-                  <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+                  <div class="col-xs-10">{{strings.longterm || enpack.longterm}} ({{strings.receivables ||enpack.receivables}})</div>
                   <div class="col-xs-2">{{getSalesOfOf("debtor", "longterm")}}</div>
                 </li>
                 <li>
@@ -100,18 +106,29 @@
       </ul>
     </li>
     <li>
-      <div class="col-xs-10">{{strings.assetsTotal || enpack.assetsTotal}}</div>
-      <div class="col-xs-2">{{getAssets()}}</div>
+      <div [ngSwitch]="theMatch()">
+        <div *ngSwitchCase="true">
+          <div class="col-xs-10"><b>{{strings.assetsTotal || enpack.assetsTotal}}</b></div>
+          <div class="col-xs-2">{{getAssets()}}</div>
+        </div>
+        <div *ngSwitchDefault>
+          <div class="col-xs-10"><b style="color: #ff0000">{{strings.assetsTotal || enpack.assetsTotal}}</b></div>
+          <div class="col-xs-2">{{getAssets()}}</div>
+        </div>
+      </div>
     </li>
     <div class="col-xs-12"><br></div>
-    <li><div class="col-xs-12">{{strings.equityAndLiabilities || enpack.equityAndLiabilities}}</div></li>
+    <li><div class="col-xs-12"><b>{{strings.equityAndLiabilities || enpack.equityAndLiabilities}}</b></div></li>
     <li>
       <ul>
-        <li>
-          <div class="col-xs-10">{{strings.capitalAndReserves || enpack.capitalAndReserves}}</div>
-          <div class="col-xs-2">{{getCapitalAndReserves()}}</div>
+        <li (click)="toggleDropdown('capitalAndReserves')">
+          <div class="col-xs-10 otsikko">
+            {{strings.capitalAndReserves || enpack.capitalAndReserves}}
+            <sub class="glyphicon glyphicon-triangle-{{topBottom('capitalAndReserves')}}"></sub>
+          </div>
+          <div class="col-xs-2"><b>{{getCapitalAndReserves()}}</b></div>
         </li>
-        <li>
+        <li *ngIf="dropdownToggler('capitalAndReserves')" >
           <ul>
             <li>
               <div class="col-xs-10">{{strings.subscribedCapital || enpack.subscribedCapital}}</div>
@@ -136,21 +153,24 @@
           </ul>
         </li>
         <li>
-          <div class="col-xs-10">{{strings.appropriations || enpack.appropriations}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-10 otsikko">{{strings.appropriations || enpack.appropriations}}</div>
+          <div class="col-xs-2"><b>0</b></div>
         </li>
         <li>
-          <div class="col-xs-10">{{strings.provisions || enpack.provisions}}</div>
-          <div class="col-xs-2">0</div>
+          <div class="col-xs-10 otsikko">{{strings.provisions || enpack.provisions}}</div>
+          <div class="col-xs-2"><b>0</b></div>
         </li>
-        <li>
-          <div class="col-xs-10">{{strings.creditors || enpack.creditors}}</div>
-          <div class="col-xs-2">{{getCreditors()}}</div>
+        <li (click)="toggleDropdown('creditors')">
+          <div class="col-xs-10 otsikko">
+            {{strings.creditors || enpack.creditors}}
+            <sub class="glyphicon glyphicon-triangle-{{topBottom('creditors')}}"></sub>
+          </div>
+          <div class="col-xs-2"><b>{{getCreditors()}}</b></div>
         </li>
-        <li>
+        <li *ngIf="dropdownToggler('creditors')">
           <ul>
             <li>
-              <div class="col-xs-10">{{strings.longterm || enpack.longterm}}</div>
+              <div class="col-xs-10">{{strings.longterm || enpack.longterm}} ({{strings.loans || enpack.loans}})</div>
               <div class="col-xs-2">{{getSalesOfOf("loanOrDebt", "longterm")}}</div>
             </li>
             <li>
@@ -182,8 +202,16 @@
       </ul>
     </li>
     <li>
-      <div class="col-xs-10">{{strings.equityAndLiabilitiesTotal || enpack.equityAndLiabilitiesTotal}}</div>
-      <div class="col-xs-2">{{getEquityTotal()}}</div>
+      <div [ngSwitch]="theMatch()">
+        <div *ngSwitchCase="true">
+          <div class="col-xs-10"><b>{{strings.equityAndLiabilitiesTotal || enpack.equityAndLiabilitiesTotal}}</b></div>
+          <div class="col-xs-2">{{getEquityTotal()}}</div>
+        </div>
+        <div *ngSwitchDefault>
+          <div class="col-xs-10"><b style="color: #ff0000">{{strings.equityAndLiabilitiesTotal || enpack.equityAndLiabilitiesTotal}}</b></div>
+          <div class="col-xs-2">{{getEquityTotal()}}</div>
+        </div>
+      </div>
     </li>
   </ul>
 </div>

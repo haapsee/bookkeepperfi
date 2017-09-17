@@ -8,24 +8,18 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  flags: any = [/*{
+  flags: any = [{
       shortened: "fi",
-      link: "/fi/software"
-    },*/ {
+      link: "/fi"
+    },{
       shortened: "gb",
       link: "/en"
-    }/*, {
+    }, {
       shortened: "se",
-      link: "/se/software" }*/];
+      link: "/se" }];
 
-    text: any = "test/1";
+  constructor(private router: Router) {  }
 
-  constructor(private router: Router) {
-      console.log(this.router.url);
-      console.log(this.text.split("/"));
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

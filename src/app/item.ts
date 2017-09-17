@@ -20,11 +20,11 @@ export class Item {
   }
 
   getItem(){
-    console.log("Money : " + this.money);
-    console.log("vat : " + this.vat);
-    console.log("header : " + this.header);
-    console.log("subHeader : " + this.subHeader);
-    console.log("credit / debit : " + this.cOrD);
+    // console.log("Money : " + this.money);
+    // console.log("vat : " + this.vat);
+    // console.log("header : " + this.header);
+    // console.log("subHeader : " + this.subHeader);
+    // console.log("credit / debit : " + this.cOrD);
   }
 
   setIndex(i){
